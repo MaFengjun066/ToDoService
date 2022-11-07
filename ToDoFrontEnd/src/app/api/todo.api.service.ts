@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ToDoItem } from '../model/ToDoItem';
 import { Observable, throwError } from 'rxjs';
 
-const apiUrl: string = "https://635fc244ca0fe3c21aa3d012.mockapi.io/api/todos";
+const apiUrl: string = "https://localhost:5001/ToDos";
 
 @Injectable({
   providedIn: 'root'
