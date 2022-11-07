@@ -16,6 +16,10 @@ export class TodoService {
     return this.todoStore.getAll();
   }
 
+  public findById(id: number): ToDoItem {
+    return this.todoStore.findById(id);
+  }
+
   public create(todoItem: ToDoItem): void {
     this.todoStore.create(todoItem);
   }
