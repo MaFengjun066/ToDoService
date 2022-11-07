@@ -8,6 +8,7 @@ import { TodoStoreService } from './todo-store.service';
 })
 export class TodoService {
 
+  public errorMessage?: string = 'create failed';
   private _selectedTodoItem: ToDoItem = {} as ToDoItem;
   private _updatingTodoItem: ToDoItem = {} as ToDoItem;
   constructor(private todoStore: TodoStoreService, private todoApi: TodoApiService) {
@@ -23,6 +24,7 @@ export class TodoService {
 
   public create(todoItem: ToDoItem): void {
     this.todoApi.create(todoItem);
+
   }
 
   public update(updateTodoItem: ToDoItem): void {
