@@ -23,7 +23,12 @@ export class TodoService {
   }
 
   public create(todoItem: ToDoItem): void {
-    this.todoApi.create(todoItem);
+    this.todoApi.create(todoItem).subscribe({
+      next: response =>{},
+      error:error=>{
+        this.errorMessage = error.errorMessage;
+      }
+    });
 
   }
 
