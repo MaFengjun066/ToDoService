@@ -77,4 +77,13 @@ describe('TodoService', () => {
     expect(httpClientSpy.put).toHaveBeenCalledWith('https://localhost:5001/ToDos/9', todoItem);
   });
 
+  it('should get all todoitem when via getall', () => {
+    // given
+    const todoItem = new ToDoItem(9, 'hello', 'description', true);
+    // when
+    service.getAll();
+    // then
+    expect(httpClientSpy.get).toHaveBeenCalledWith('https://localhost:5001/ToDos');
+  });
+
 });

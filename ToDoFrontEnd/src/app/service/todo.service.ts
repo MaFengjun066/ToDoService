@@ -15,8 +15,8 @@ export class TodoService {
   constructor(private todoStore: TodoStoreService, private todoApi: TodoApiService) {
   }
 
-  public get todoItems(): Array<ToDoItem> {
-    return this.todoStore.getAll();
+  public getAll(): Observable<Array<ToDoItem>> {
+    return this.todoApi.getAll();
   }
 
   public findById(id: number): Observable<ToDoItem> {
@@ -44,11 +44,15 @@ export class TodoService {
   }
 
   public selectTodoItem(id: number): void {
-    this._selectedTodoItem = this.todoStore.findById(id);
+    this.todoApi.getById(id).subscribe(res => {
+      this._selectedTodoItem = res;
+    });
   }
 
   public selectTodoItemForUpdate(id: number): void {
-    this._updatingTodoItem = Object.assign({}, this.todoStore.findById(id));
+    this.todoApi.getById(id).subscribe(res => {
+      this._updatingTodoItem = Object.assign({}, res);
+    });
   }
 
   public currentTodoItem(): ToDoItem {
