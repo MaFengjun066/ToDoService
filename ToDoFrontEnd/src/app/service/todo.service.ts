@@ -12,7 +12,6 @@ export class TodoService {
   public errorMessage?: string = 'create failed';
   private _selectedTodoItem: ToDoItem = {} as ToDoItem;
   private _updatingTodoItem: ToDoItem = {} as ToDoItem;
-  private _detailTodoItem: ToDoItem = {} as ToDoItem;
   constructor(private todoStore: TodoStoreService, private todoApi: TodoApiService) {
   }
 
@@ -40,7 +39,7 @@ export class TodoService {
   }
 
   public delete(id: number): void {
-    this.todoStore.delete(id);
+    this.todoApi.delete(id);
   }
 
   public selectTodoItem(id: number): void {

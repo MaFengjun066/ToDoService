@@ -14,7 +14,7 @@ describe('TodoService', () => {
   let httpClientSpy: any
 
   beforeEach(() => {
-    httpClientSpy = jasmine.createSpyObj("HttpClient", ['post', 'get']);
+    httpClientSpy = jasmine.createSpyObj("HttpClient", ['post', 'get', 'delete']);
     todoStoreService = new TodoStoreService();
     TestBed.configureTestingModule({
       providers: [
@@ -57,6 +57,15 @@ describe('TodoService', () => {
     service.findById(9);
     // then
     expect(httpClientSpy.get).toHaveBeenCalledWith('https://localhost:5001/ToDos/9');
+  });
+
+  it('should delete todoitem when via delete', () => {
+    // given
+    //const todoItem = new ToDoItem(9, 'hello', 'description', true);
+    // when
+    service.delete(9);
+    // then
+    expect(httpClientSpy.delete).toHaveBeenCalledWith('https://localhost:5001/ToDos/9');
   });
 
 });
