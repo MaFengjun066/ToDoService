@@ -21,13 +21,13 @@ export class UpdateTodoItemComponent implements OnInit {
 
   ngOnInit(): void { 
     const id = this.activeRoute.snapshot.paramMap.get('id');
-    console.log(id);
     this.todoService.findById(Number(id)).subscribe(res => {
       this.todoItem = res;
     });
   }
 
   update(): void {
-    this.todoService.update(this.todoItem);
+    const id = this.activeRoute.snapshot.paramMap.get('id');
+    this.todoService.update(Number(id),this.todoItem);
   }
 }

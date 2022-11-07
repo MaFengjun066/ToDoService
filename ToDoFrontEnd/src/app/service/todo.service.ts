@@ -31,11 +31,12 @@ export class TodoService {
         this.errorMessage = error.errorMessage;
       }
     });
-
   }
 
-  public update(updateTodoItem: ToDoItem): void {
-    this.todoStore.update(updateTodoItem);
+  public update(id: number, updateTodoItem: ToDoItem): void {
+    console.log(1111, updateTodoItem);
+    
+    this.todoApi.update(id, updateTodoItem);
   }
 
   public delete(id: number): void {
